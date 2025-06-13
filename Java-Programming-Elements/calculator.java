@@ -12,3 +12,4 @@ public class calculator {
         System.out.println(" The addition, subtraction, multiplication and division value of 2 numbers "+num1+" and "+num2+" is "+sum+", "+difference+", "+product+", and "+quotient);
     }
 }
+
