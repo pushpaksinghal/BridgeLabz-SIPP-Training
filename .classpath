@@ -9,5 +9,6 @@
 	<classpathentry kind="src" path="Java-Programming-Elements"/>
 	<classpathentry kind="src" path="Arrays"/>
 	<classpathentry kind="src" path="Strings"/>
+	<classpathentry kind="src" path="Java-Methods"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
