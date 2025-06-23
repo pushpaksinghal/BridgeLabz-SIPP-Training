@@ -5,10 +5,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="java-control-flows"/>
-	<classpathentry kind="src" path="Java-Programming-Elements"/>
-	<classpathentry kind="src" path="Arrays"/>
-	<classpathentry kind="src" path="Strings"/>
-	<classpathentry kind="src" path="Java-Methods"/>
+	<classpathentry kind="src" path="Class-and-Objects"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
