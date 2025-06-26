@@ -6,5 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="Class-and-Objects"/>
+	<classpathentry kind="src" path="Constructors-AccessModifiers-Instance-Class-variables"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 class MovieTicket {
     String movieName;
@@ -11,33 +11,44 @@ class MovieTicket {
         this.price = price;
         System.out.println("Ticket booked successfully.");
     }
-
-    public void displayTicketDetails() {
-        System.out.println("----- Ticket Details -----");
-        System.out.println("Movie Name : " + movieName);
-        System.out.println("Seat Number: " + seatNumber);
-        System.out.printf("Price      : ₹%.2f\n", price);
-    }
 }
 
+class cinema{
+	ArrayList<MovieTicket> movies = new ArrayList<>();
+	
+	public void addSoldSeat(MovieTicket movie) {
+		movies.add(movie);
+	}
+	
+	public void removiesoldseat( String movieName) {
+		for(int i=0;i<movies.size();i++) {
+			if(movies.get(i).movieName.equals(movieName)) {
+				movies.remove(i);
+			}
+		}
+	}
+	
+	public void displaysoldseats() {
+		for(int i=0;i<movies.size();i++) {
+			System.out.println("MovieName: "+ movies.get(i).movieName);
+			System.out.println("SeatNumber: "+ movies.get(i).seatNumber);
+			System.out.println("Price: "+ movies.get(i).price);
+			System.out.println();
+		}
+	}
+	
+}
 public class MovieBookingSystem {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        MovieTicket ticket = new MovieTicket();
-
-        System.out.print("Enter movie name: ");
-        String movie = scanner.nextLine();
-
-        System.out.print("Enter seat number: ");
-        String seat = scanner.nextLine();
-
-        System.out.print("Enter ticket price: ₹");
-        double price = scanner.nextDouble();
-
-        ticket.bookTicket(movie, seat, price);
-        System.out.println();
-        ticket.displayTicketDetails();
-
-        scanner.close();
+        cinema c1 = new cinema();
+        MovieTicket ticket1 = new MovieTicket();
+        MovieTicket ticket2 = new MovieTicket();
+        ticket1.bookTicket("spiderman", "004", 100.00);
+        ticket2.bookTicket("SUPERMAN", "104", 70.00);
+        
+        c1.addSoldSeat(ticket1);
+        c1.addSoldSeat(ticket2);
+        c1.displaysoldseats();
+     
     }
 }
