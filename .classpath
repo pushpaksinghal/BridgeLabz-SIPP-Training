@@ -7,5 +7,7 @@
 	</classpathentry>
 	<classpathentry kind="src" path="Class-and-Objects"/>
 	<classpathentry kind="src" path="Constructors-AccessModifiers-Instance-Class-variables"/>
+	<classpathentry kind="src" path="this-final-static-instanceof"/>
+	<classpathentry kind="src" path="Object-relationships-and-Communication"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
