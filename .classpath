@@ -9,5 +9,6 @@
 	<classpathentry kind="src" path="Constructors-AccessModifiers-Instance-Class-variables"/>
 	<classpathentry kind="src" path="this-final-static-instanceof"/>
 	<classpathentry kind="src" path="Object-relationships-and-Communication"/>
+	<classpathentry kind="src" path="Inheritance"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
