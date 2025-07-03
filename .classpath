@@ -10,5 +10,6 @@
 	<classpathentry kind="src" path="this-final-static-instanceof"/>
 	<classpathentry kind="src" path="Object-relationships-and-Communication"/>
 	<classpathentry kind="src" path="Inheritance"/>
+	<classpathentry kind="src" path="Encapsulation_Polymorphism_Interface_and_Abstract"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
