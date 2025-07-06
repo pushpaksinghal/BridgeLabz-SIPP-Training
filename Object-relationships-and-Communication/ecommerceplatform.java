@@ -1,10 +1,10 @@
 import java.util.*;
 
-class Productss {
+class Productses {
     private String name;
     private double price;
 
-    public Productss(String name, double price) {
+    public Productses(String name, double price) {
         this.name = name;
         this.price = price;
     }
@@ -22,7 +22,7 @@ class Order {
     private static int count = 1;
     private int orderId;
     private Customerss customer;
-    private List<Productss> products;
+    private List<Productses> products;
 
     public Order(Customerss customer) {
         this.orderId = count++;
@@ -30,14 +30,14 @@ class Order {
         this.products = new ArrayList<>();
     }
 
-    public void addProduct(Productss product) {
+    public void addProduct(Productses product) {
         products.add(product);
     }
 
     public void showOrderDetails() {
         System.out.println("Order ID: " + orderId + " by Customer: " + customer.getName());
         double total = 0;
-        for (Productss p : products) {
+        for (Productses p : products) {
             System.out.println(" - " + p.getName() + ": ₹" + p.getPrice());
             total += p.getPrice();
         }
@@ -73,9 +73,9 @@ class Customerss {
 
 public class ecommerceplatform {
     public static void main(String[] args) {
-    	Productss p1 = new Productss("Laptop", 60000);
-        Productss p2 = new Productss("Mouse", 500);
-        Productss p3 = new Productss("Keyboard", 1500);
+    	Productses p1 = new Productses("Laptop", 60000);
+        Productses p2 = new Productses("Mouse", 500);
+        Productses p3 = new Productses("Keyboard", 1500);
 
         Customerss c1 = new Customerss("Anita");
 

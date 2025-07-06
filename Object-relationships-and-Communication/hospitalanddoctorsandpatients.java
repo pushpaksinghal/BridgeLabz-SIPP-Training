@@ -3,7 +3,7 @@ import java.util.*;
 class Hospital {
     private String name;
     private List<Doctor> doctors;
-    private List<Patient> patients;
+    private List<Patientes> patients;
 
     public Hospital(String name) {
         this.name = name;
@@ -15,7 +15,7 @@ class Hospital {
         doctors.add(doctor);
     }
 
-    public void addPatient(Patient patient) {
+    public void addPatient(Patientes patient) {
         patients.add(patient);
     }
 
@@ -28,7 +28,7 @@ class Hospital {
 
     public void showAllPatients() {
         System.out.println("Patients at " + name + ":");
-        for (Patient p : patients) {
+        for (Patientes p : patients) {
             System.out.println(" " + p.getName());
         }
     }
@@ -36,14 +36,14 @@ class Hospital {
 
 class Doctor {
     private String name;
-    private List<Patient> patients;
+    private List<Patientes> patients;
 
     public Doctor(String name) {
         this.name = name;
         this.patients = new ArrayList<>();
     }
 
-    public void consult(Patient patient) {
+    public void consult(Patientes patient) {
         if (!patients.contains(patient)) {
             patients.add(patient);
             patient.addDoctor(this);
@@ -57,17 +57,17 @@ class Doctor {
 
     public void showPatients() {
         System.out.println("Patients of Dr. " + name + ":");
-        for (Patient p : patients) {
+        for (Patientes p : patients) {
             System.out.println(" " + p.getName());
         }
     }
 }
 
-class Patient {
+class Patientes {
     private String name;
     private List<Doctor> doctors;
 
-    public Patient(String name) {
+    public Patientes(String name) {
         this.name = name;
         this.doctors = new ArrayList<>();
     }
@@ -97,8 +97,8 @@ public class hospitalanddoctorsandpatients {
         Doctor d1 = new Doctor("Dr. Sharma");
         Doctor d2 = new Doctor("Dr. Mehta");
 
-        Patient p1 = new Patient("Ravi");
-        Patient p2 = new Patient("Sita");
+        Patientes p1 = new Patientes("Ravi");
+        Patientes p2 = new Patientes("Sita");
 
         hospital.addDoctor(d1);
         hospital.addDoctor(d2);

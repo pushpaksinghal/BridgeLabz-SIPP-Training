@@ -1,26 +1,26 @@
 public class employeemanagement {
     public static void main(String[] args) {
         // Create employee objects
-        Employee emp1 = new Employee("Alice", "HR Manager", 101);
-        Employee emp2 = new Employee("Bob", "Software Engineer", 102);
+        Emppp emp1 = new Emppp("Alice", "HR Manager", 101);
+        Emppp emp2 = new Emppp("Bob", "Software Engineer", 102);
 
         // Display total number of employees
-        Employee.displayTotalEmployees();
+        Emppp.displayTotalEmployees();
 
         // Display company name (static variable)
-        System.out.println("Company Name: " + Employee.companyName);
+        System.out.println("Company Name: " + Emppp.companyName);
 
         // Display employee details using instanceof
-        Employee.displayEmployeeDetails(emp1);
-        Employee.displayEmployeeDetails(emp2);
+        Emppp.displayEmployeeDetails(emp1);
+        Emppp.displayEmployeeDetails(emp2);
 
         // Test with a non-Employee object
         String notAnEmployee = "Random String";
-        Employee.displayEmployeeDetails(notAnEmployee);
+        Emppp.displayEmployeeDetails(notAnEmployee);
     }
 }
 
-class Employee {
+class Emppp {
     // Static variable shared by all employees
     public static String companyName = "Tech Solutions Pvt. Ltd.";
     private static int totalEmployees = 0;
@@ -33,7 +33,7 @@ class Employee {
     private String designation;
 
     // Constructor using 'this'
-    public Employee(String name, String designation, int id) {
+    public Emppp(String name, String designation, int id) {
         this.name = name;
         this.designation = designation;
         this.id = id;
@@ -47,8 +47,8 @@ class Employee {
 
     // Method to display employee details using instanceof
     public static void displayEmployeeDetails(Object obj) {
-        if (obj instanceof Employee) {
-            Employee e = (Employee) obj;
+        if (obj instanceof Emppp) {
+            Emppp e = (Emppp) obj;
             System.out.println("\nEmployee Details:");
             System.out.println("Name: " + e.name);
             System.out.println("ID: " + e.id);

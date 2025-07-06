@@ -1,23 +1,23 @@
-public class shoppingcart {
+public class shoppingcartsss {
     public static void main(String[] args) {
         // Update the discount for all products
-        Product.updateDiscount(10.0); // 10% discount
+        Productss.updateDiscount(10.0); // 10% discount
 
         // Create product objects
-        Product p1 = new Product("Laptop", 75000.0, 1, 101);
-        Product p2 = new Product("Smartphone", 30000.0, 2, 102);
+        Productss p1 = new Productss("Laptop", 75000.0, 1, 101);
+        Productss p2 = new Productss("Smartphone", 30000.0, 2, 102);
 
         // Display product details using instanceof
-        Product.displayProductDetails(p1);
-        Product.displayProductDetails(p2);
+        Productss.displayProductDetails(p1);
+        Productss.displayProductDetails(p2);
 
         // Test with a non-product object
         String notAProduct = "Hello";
-        Product.displayProductDetails(notAProduct);
+        Productss.displayProductDetails(notAProduct);
     }
 }
 
-class Product {
+class Productss {
     // Static variable shared by all products
     private static double discount = 0.0; // in percentage
 
@@ -30,7 +30,7 @@ class Product {
     private int quantity;
 
     // Constructor using 'this'
-    public Product(String productName, double price, int quantity, int productID) {
+    public Productss(String productName, double price, int quantity, int productID) {
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
@@ -45,8 +45,8 @@ class Product {
 
     // Method to display product details using instanceof
     public static void displayProductDetails(Object obj) {
-        if (obj instanceof Product) {
-            Product p = (Product) obj;
+        if (obj instanceof Productss) {
+            Productss p = (Productss) obj;
             System.out.println("\nProduct Details:");
             System.out.println("Product ID: " + p.productID);
             System.out.println("Name: " + p.productName);

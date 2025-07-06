@@ -1,23 +1,23 @@
-public class VehicleRegistration {
+public class VehicleRegistrationss {
     public static void main(String[] args) {
         // Update registration fee for all vehicles
-        Vehicle.updateRegistrationFee(1500.0);
+        ehicless.updateRegistrationFee(1500.0);
 
         // Create Vehicle objects
-        Vehicle v1 = new Vehicle("Ravi Sharma", "Car", "DL10AB1234");
-        Vehicle v2 = new Vehicle("Priya Mehta", "Bike", "MH12XY9876");
+        ehicless v1 = new ehicless("Ravi Sharma", "Car", "DL10AB1234");
+        ehicless v2 = new ehicless("Priya Mehta", "Bike", "MH12XY9876");
 
         // Display vehicle details using instanceof
-        Vehicle.displayRegistrationDetails(v1);
-        Vehicle.displayRegistrationDetails(v2);
+        ehicless.displayRegistrationDetails(v1);
+        ehicless.displayRegistrationDetails(v2);
 
         // Try with a non-vehicle object
         String notAVehicle = "Just a string";
-        Vehicle.displayRegistrationDetails(notAVehicle);
+        ehicless.displayRegistrationDetails(notAVehicle);
     }
 }
 
-class Vehicle {
+class ehicless {
     // Static variable shared by all vehicles
     private static double registrationFee = 1000.0;
 
@@ -29,7 +29,7 @@ class Vehicle {
     private String vehicleType;
 
     // Constructor using 'this'
-    public Vehicle(String ownerName, String vehicleType, String registrationNumber) {
+    public ehicless(String ownerName, String vehicleType, String registrationNumber) {
         this.ownerName = ownerName;
         this.vehicleType = vehicleType;
         this.registrationNumber = registrationNumber;
@@ -43,8 +43,8 @@ class Vehicle {
 
     // Method to display vehicle details using instanceof
     public static void displayRegistrationDetails(Object obj) {
-        if (obj instanceof Vehicle) {
-            Vehicle v = (Vehicle) obj;
+        if (obj instanceof ehicless) {
+            ehicless v = (ehicless) obj;
             System.out.println("\nVehicle Registration Details:");
             System.out.println("Owner Name: " + v.ownerName);
             System.out.println("Vehicle Type: " + v.vehicleType);

@@ -3,13 +3,13 @@ interface Department {
     String getDepartmentDetails();
 }
 
-abstract class Employee {
+abstract class Employesse {
     private int employeeId;
     private String name;
     private double baseSalary;
     private String department;
 
-    Employee(int employeeId, String name, double baseSalary) {
+    Employesse(int employeeId, String name, double baseSalary) {
         this.employeeId = employeeId;
         this.name = name;
         this.baseSalary = baseSalary;
@@ -46,7 +46,7 @@ abstract class Employee {
     public abstract double calculateSalary();
 }
 
-class FullTimeEmployee extends Employee implements Department {
+class FullTimeEmployee extends Employesse implements Department {
     private double bonus;
 
     FullTimeEmployee(int employeeId, String name, double baseSalary, double bonus) {
@@ -70,7 +70,7 @@ class FullTimeEmployee extends Employee implements Department {
     }
 }
 
-class PartTimeEmployee extends Employee implements Department {
+class PartTimeEmployee extends Employesse implements Department {
     private int hoursWorked;
     private double hourlyRate;
 
@@ -98,7 +98,7 @@ class PartTimeEmployee extends Employee implements Department {
 
 public class EmployeeMan {
     public static void main(String[] args) {
-        Employee[] employees = new Employee[2];
+        Employesse[] employees = new Employesse[2];
 
         FullTimeEmployee emp1 = new FullTimeEmployee(101, "Alice", 50000, 8000);
         emp1.assignDepartment("Engineering");
@@ -109,7 +109,7 @@ public class EmployeeMan {
         employees[0] = emp1;
         employees[1] = emp2;
 
-        for (Employee emp : employees) {
+        for (Employesse emp : employees) {
             emp.displayDetails();
             System.out.println();
         }
