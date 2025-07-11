@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="LinkedList"/>
 	<classpathentry kind="src" path="Stack _Queue"/>
 	<classpathentry kind="src" path="Sorting"/>
+	<classpathentry kind="src" path="Linear_and_Binary_Search"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
