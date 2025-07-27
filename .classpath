@@ -9,5 +9,7 @@
 	<classpathentry kind="src" path="Stack _Queue"/>
 	<classpathentry kind="src" path="Sorting"/>
 	<classpathentry kind="src" path="Linear_and_Binary_Search"/>
+	<classpathentry kind="src" path="Senario_based_DSA"/>
+	<classpathentry kind="src" path="RuntimeAnalysis_BigONotation"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
