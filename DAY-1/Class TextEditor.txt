@@ -1,0 +1,17 @@
+Class TextEditor:
+    Attribute: text, undoStack (Stack)
+
+    Constructor():
+        Set text = ""
+        Initialize undoStack
+
+    Method type(newText):
+        Push current text to undoStack
+        Append newText to text
+
+    Method undo():
+        If undoStack is not empty:
+            Set text = undoStack.pop()
+
+    Method print():
+        Print "Current Text: " + text

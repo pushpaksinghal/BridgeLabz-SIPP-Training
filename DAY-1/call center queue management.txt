@@ -1,0 +1,27 @@
+Class Customer:
+    Attribute: name, isEmergency
+    Constructor(name, isEmergency):
+        Set this.name = name
+        Set this.isEmergency = isEmergency
+
+    Method print():
+        Print "Customer Name: " + name
+        Print "Emergency: " + isEmergency
+
+Queue normalQueue
+Queue emergencyQueue
+
+
+Function addCustomer(customer):
+    If customer.isEmergency:
+        emergencyQueue.enqueue(customer)
+    Else:
+        normalQueue.enqueue(customer)
+
+Function getNextCustomer():
+    If emergencyQueue is not empty:
+        Return emergencyQueue.dequeue()
+    Else If normalQueue is not empty:
+        Return normalQueue.dequeue()
+    Else:
+        Return null
