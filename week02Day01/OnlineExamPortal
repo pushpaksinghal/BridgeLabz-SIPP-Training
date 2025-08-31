@@ -1,0 +1,51 @@
+Class User
+    Attributes:
+        username
+        password
+
+    Method login():
+        Print "Generic user login..."
+        Return true
+
+
+Class Student inherits User
+    Attributes:
+        isRegistered
+        isEnrolled
+
+    Method login():
+        If isRegistered AND isEnrolled:
+            Print "Student <username> logged in successfully."
+            Print "Showing available exams..."
+            Return true
+        Else:
+            Print "Student login failed: Not registered or not enrolled."
+            Return false
+
+
+Class Admin inherits User
+    Attributes:
+        hasAdminPrivileges
+
+    Method login():
+        If hasAdminPrivileges:
+            Print "Admin <username> logged in successfully."
+            Print "Accessing exam management tools..."
+            Return true
+        Else:
+            Print "Admin login failed: Invalid privileges."
+            Return false
+
+
+Main Program:
+    Create Student object "john123" with registered = true, enrolled = true
+    Call student.login()
+
+    Create Admin object "admin01" with hasAdminPrivileges = true
+    Call admin.login()
+
+    Create Student object "mark456" with registered = false, enrolled = false
+    Call student.login()
+
+    Create Admin object "staff02" with hasAdminPrivileges = false
+    Call admin.login()

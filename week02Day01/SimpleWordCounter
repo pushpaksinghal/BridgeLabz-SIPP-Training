@@ -1,0 +1,28 @@
+Class WordCounter
+    Method processText(paragraph):
+        text = paragraph
+                .toLowerCase()
+                .removePunctuation()
+
+        words = split text by spaces
+
+        wordCountMap = empty Map<String, Integer>
+
+        For each word in words:
+            If wordCountMap contains word:
+                wordCountMap[word] = wordCountMap[word] + 1
+            Else:
+                wordCountMap[word] = 1
+
+        sortedWordCounts = wordCountMap
+                .entries()
+                .sorted(by value descending, then key ascending)
+
+        Print "Word Frequencies:"
+        For each (word, count) in sortedWordCounts:
+            Print word + " → " + count
+
+
+Main Program:
+    paragraph = "The news today is about the rise in technology trends."
+    WordCounter.processText(paragraph)
