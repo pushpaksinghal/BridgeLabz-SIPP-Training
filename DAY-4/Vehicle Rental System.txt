@@ -1,0 +1,41 @@
+Interface Rentable:
+    Method rent()
+    Method returnVehicle()
+
+Abstract Class Vehicle implements Rentable:
+    Attribute vehicleId
+    Attribute type
+    Attribute isAvailable
+
+Class Car inherits Vehicle:
+    Method rent():
+        If isAvailable:
+            isAvailable = False
+            Print "Car rented"
+        Else:
+            Print "Car not available"
+
+    Method returnVehicle():
+        isAvailable = True
+        Print "Car returned"
+
+Class Bike inherits Vehicle:
+    Method rent():
+        If isAvailable:
+            isAvailable = False
+            Print "Bike rented"
+        Else:
+            Print "Bike not available"
+
+    Method returnVehicle():
+        isAvailable = True
+        Print "Bike returned"
+
+Class VehicleFactory:
+    Static Method createVehicle(type):
+        If type == "Car":
+            Return new Car()
+        Else If type == "Bike":
+            Return new Bike()
+        Else:
+            Return null

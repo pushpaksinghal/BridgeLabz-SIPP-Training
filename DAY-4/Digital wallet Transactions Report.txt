@@ -1,0 +1,16 @@
+Class Transaction:
+    Attribute merchant
+    Attribute date
+    Attribute amount
+
+Function groupTransactions(transactions):
+    report = empty map of (merchant, month) -> totalAmount
+
+    For transaction in transactions:
+        key = (transaction.merchant, transaction.date.month)
+        If key not in report:
+            report[key] = 0
+        report[key] += transaction.amount
+
+    For each key in report:
+        Print key.merchant + " - " + key.month + ": $" + report[key]

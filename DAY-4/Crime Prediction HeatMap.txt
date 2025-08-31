@@ -1,0 +1,23 @@
+Class Zone:
+    Attribute id
+    Attribute crimeRate
+    Attribute neighbors (List of Zone)
+
+Function dfs(zone, visited, threshold, highRiskZones):
+    visited.add(zone)
+    If zone.crimeRate > threshold:
+        highRiskZones.add(zone)
+
+    For neighbor in zone.neighbors:
+        If neighbor not in visited:
+            dfs(neighbor, visited, threshold, highRiskZones)
+
+Function findHighRiskZones(cityZones, threshold):
+    visited = empty set
+    highRiskZones = empty list
+
+    For zone in cityZones:
+        If zone not in visited:
+            dfs(zone, visited, threshold, highRiskZones)
+
+    Return highRiskZones

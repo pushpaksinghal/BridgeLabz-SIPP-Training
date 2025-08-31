@@ -1,0 +1,26 @@
+Class Account:
+    Attribute accountNumber
+    Attribute balance
+
+    Method withdraw(amount):
+        // To be overridden in subclasses
+
+Class SavingAccount inherits Account:
+    Attribute minBalance
+
+    Method withdraw(amount):
+        If balance - amount >= minBalance:
+            balance = balance - amount
+            Print "Withdrawal successful"
+        Else:
+            Print "Insufficient balance after maintaining minimum balance"
+
+Class CurrentAccount inherits Account:
+    Attribute overdraftLimit
+
+    Method withdraw(amount):
+        If balance + overdraftLimit >= amount:
+            balance = balance - amount
+            Print "Withdrawal successful"
+        Else:
+            Print "Overdraft limit exceeded"

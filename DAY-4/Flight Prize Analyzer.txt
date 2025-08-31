@@ -1,0 +1,29 @@
+Class Flight:
+    Attribute price
+    Attribute duration
+
+Function compareFlights(f1, f2):
+    If f1.price != f2.price:
+        Return f1.price - f2.price
+    Else:
+        Return f1.duration - f2.duration
+
+Function mergeSort(flights):
+    If length of flights <= 1:
+        Return flights
+
+    mid = length of flights / 2
+    left = mergeSort(flights[0:mid])
+    right = mergeSort(flights[mid:end])
+    Return merge(left, right)
+
+Function merge(left, right):
+    result = empty list
+    While left and right not empty:
+        If compareFlights(left[0], right[0]) < 0:
+            result.add(left.removeFirst())
+        Else:
+            result.add(right.removeFirst())
+
+    Append remaining elements from left and right to result
+    Return result
