@@ -1,0 +1,56 @@
+CLASS User
+    ATTRIBUTES:
+        username
+        password
+
+    METHOD login():
+        PRINT "Base User login. Override this in subclasses."
+
+
+CLASS Student EXTENDS User
+    ATTRIBUTES:
+        isRegistered
+        isEnrolled
+
+    METHOD login():
+        IF (username and password are valid) AND (isRegistered == true) AND (isEnrolled == true) THEN
+            PRINT "Student " + username + " logged in successfully."
+            SHOW "Available Exams"
+        ELSE
+            PRINT "Student login failed. Check registration/enrollment."
+
+CLASS Admin EXTENDS User
+    ATTRIBUTES:
+        hasAdminPrivileges
+
+    METHOD login():
+        IF (username and password are valid) AND (hasAdminPrivileges == true) THEN
+            PRINT "Admin " + username + " logged in successfully."
+            SHOW "Exam Management Tools"
+        ELSE
+            PRINT "Admin login failed. Invalid credentials or no privileges."
+
+-------------------------------------------------------
+
+CLASS ExamPortal
+    MAIN METHOD:
+        // Create users
+        student1 = new Student("john123", "pass123", isRegistered=true, isEnrolled=true)
+        admin1   = new Admin("admin001", "admin@123", hasAdminPrivileges=true)
+
+        // Demonstrate Polymorphism
+        DECLARE userRef
+
+        userRef = student1
+        CALL userRef.login()    // Calls Student.login()
+
+        userRef = admin1
+        CALL userRef.login()    // Calls Admin.login()
+
+
+OUTPUT (Example Run):
+    Student john123 logged in successfully.
+    Available Exams
+
+    Admin admin001 logged in successfully.
+    Exam Management Tools

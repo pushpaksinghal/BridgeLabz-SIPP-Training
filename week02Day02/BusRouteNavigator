@@ -1,0 +1,89 @@
+Start
+CLASS Node
+    ATTRIBUTES:
+        stopName
+        next
+
+    CONSTRUCTOR(stopName):
+        SET this.stopName = stopName
+        SET this.next = null
+
+CLASS BusRoute
+    ATTRIBUTES:
+        head
+
+    METHOD insertStop(afterStop, newStop):
+        current = head
+        WHILE current != null:
+            IF current.stopName == afterStop:
+                newNode = new Node(newStop)
+                newNode.next = current.next
+                current.next = newNode
+                PRINT newStop + " added after " + afterStop
+                RETURN
+            ENDIF
+            current = current.next
+        PRINT "Stop " + afterStop + " not found."
+
+    METHOD deleteStop(stopName):
+        IF head == null:
+            RETURN
+
+        // If head needs to be deleted
+        IF head.stopName == stopName:
+            head = head.next
+            PRINT stopName + " removed from route."
+            RETURN
+
+        current = head
+        WHILE current.next != null:
+            IF current.next.stopName == stopName:
+                current.next = current.next.next
+                PRINT stopName + " removed from route."
+                RETURN
+            ENDIF
+            current = current.next
+        PRINT "Stop " + stopName + " not found."
+
+    METHOD searchStop(stopName):
+        current = head
+        WHILE current != null:
+            IF current.stopName == stopName:
+                PRINT stopName + " is in the route."
+                RETURN true
+            ENDIF
+            current = current.next
+        PRINT stopName + " is NOT in the route."
+        RETURN false
+
+    METHOD displayRoute():
+        current = head
+        WHILE current != null:
+            PRINT current.stopName + " → "
+            current = current.next
+        PRINT "End of Route"
+
+CLASS Main
+    MAIN METHOD:
+        // Initial route
+        route = new BusRoute()
+        route.head = new Node("Depot")
+        route.head.next = new Node("Main Street")
+        route.head.next.next = new Node("City Mall")
+        route.head.next.next.next = new Node("Hospital")
+        route.head.next.next.next.next = new Node("Airport")
+
+        PRINT "Initial Route:"
+        CALL route.displayRoute()
+
+        // Insert University after City Mall
+        CALL route.insertStop("City Mall", "University")
+        CALL route.displayRoute()
+
+        // Delete Hospital
+        CALL route.deleteStop("Hospital")
+        CALL route.displayRoute()
+
+        // Search for Airport
+        CALL route.searchStop("Airport")
+

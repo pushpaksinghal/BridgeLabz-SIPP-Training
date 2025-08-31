@@ -1,0 +1,31 @@
+START
+
+INPUT text = "Sports bring people together. Sports inspire teamwork. Sports create leaders."
+
+text = convert text to lowercase
+text = remove punctuation (.,!?)
+
+words = split text by spaces
+
+DECLARE Map<String, Integer> wordCount
+
+FOR each word in words:
+    IF wordCount contains word:
+        wordCount[word] = wordCount[word] + 1
+    ELSE
+        wordCount[word] = 1
+END FOR
+
+maxWord = ""
+maxCount = 0
+FOR each (word, count) in wordCount:
+    IF count > maxCount:
+        maxWord = word
+        maxCount = count
+END FOR
+
+PRINT "Word Frequencies:" wordCount
+PRINT "Most frequent word = " + maxWord + " (" + maxCount + " times)"
+
+
+END

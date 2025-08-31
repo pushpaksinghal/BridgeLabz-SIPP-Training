@@ -1,0 +1,54 @@
+START
+
+    // Step 1: Initialize
+    SET students = 30
+    SET days = 30
+    DECLARE attendance[students][days]   // 2D Array initialized to 0 (all absent by default)
+
+    // Step 2: Function to Mark Attendance
+    FUNCTION markAttendance(studentID, day, status)
+        attendance[studentID][day] = status   // status = 1 (Present), 0 (Absent)
+    END FUNCTION
+
+    // Step 3: Function to Get Daily Summary
+    FUNCTION dailySummary(day)
+        SET count = 0
+        FOR student FROM 0 TO students-1
+            IF attendance[student][day] == 1
+                count = count + 1
+            END IF
+        END FOR
+        PRINT "Total present on Day", day+1, "=", count
+    END FUNCTION
+
+    // Step 4: Function to Get Monthly Summary of One Student
+    FUNCTION monthlySummary(studentID)
+        SET totalPresent = 0
+        FOR day FROM 0 TO days-1
+            IF attendance[studentID][day] == 1
+                totalPresent = totalPresent + 1
+            END IF
+        END FOR
+        PRINT "Student", studentID+1, "was present", totalPresent, "days"
+        RETURN totalPresent
+    END FUNCTION
+
+    // Step 5: Function to Get Defaulter List
+    FUNCTION defaulters()
+        FOR student FROM 0 TO students-1
+            SET presentDays = monthlySummary(student)   // reuse monthly summary
+            IF presentDays < (0.75 * days)
+                PRINT "Student", student+1, "is a defaulter"
+            END IF
+        END FOR
+    END FUNCTION
+
+    // Step 6: Example Usage
+    markAttendance(0, 0, 1)   // Student 1, Day 1 = Present
+    markAttendance(2, 0, 0)   // Student 3, Day 1 = Absent
+
+    dailySummary(9)           // Check Day 10 attendance
+    monthlySummary(4)         // Check Student 5’s total attendance
+    defaulters()              // Print all students with < 75% attendance
+
+END

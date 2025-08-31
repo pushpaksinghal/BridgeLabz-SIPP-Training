@@ -1,0 +1,67 @@
+CLASS Vehicle
+    ATTRIBUTES:
+        vehicleNumber
+        entryTime
+
+    CONSTRUCTOR(vehicleNumber, entryTime)
+        SET this.vehicleNumber = vehicleNumber
+        SET this.entryTime = entryTime
+
+    METHOD calculateFee(exitTime):
+        PRINT "Base calculation. Override in subclasses."
+        RETURN 0
+
+
+CLASS Car EXTENDS Vehicle
+    METHOD calculateFee(exitTime):
+        durationHours = differenceInHours(entryTime, exitTime)
+        IF durationHours <= 1
+            RETURN 50
+        ELSE
+            RETURN 50 + (ceil(durationHours - 1) * 30)
+
+
+CLASS Bike EXTENDS Vehicle
+    METHOD calculateFee(exitTime):
+        durationHours = differenceInHours(entryTime, exitTime)
+        IF durationHours <= 1
+            RETURN 20
+        ELSE
+            RETURN 20 + (ceil(durationHours - 1) * 10)
+
+
+CLASS Truck EXTENDS Vehicle
+    METHOD calculateFee(exitTime):
+        durationHours = differenceInHours(entryTime, exitTime)
+        IF durationHours <= 1
+            RETURN 100
+        ELSE
+            RETURN 100 + (ceil(durationHours - 1) * 50)
+
+
+UTILITY FUNCTION differenceInHours(startTime, endTime):
+    durationMinutes = endTime - startTime
+    durationHours = durationMinutes / 60.0
+    RETURN durationHours
+
+
+CLASS ParkingSystem
+    MAIN METHOD:
+        // Morning Entry
+        car1 = new Car("KA05AB1234", 10:00)
+        bike1 = new Bike("KA05XY7890", 11:15)
+        truck1 = new Truck("KA09TR5566", 09:30)
+
+        // Evening Exit
+        feeCar   = car1.calculateFee(13:30)
+        feeBike  = bike1.calculateFee(12:00)
+        feeTruck = truck1.calculateFee(14:00)
+
+        PRINT "Car KA05AB1234 → Fee: ₹" + feeCar
+        PRINT "Bike KA05XY7890 → Fee: ₹" + feeBike
+        PRINT "Truck KA09TR5566 → Fee: ₹" + feeTruck
+
+OUTPUT (Example Run):
+    Car KA05AB1234 → Fee: ₹125
+    Bike KA05XY7890 → Fee: ₹30
+    Truck KA09TR5566 → Fee: ₹325

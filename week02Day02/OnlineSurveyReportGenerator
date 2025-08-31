@@ -1,0 +1,36 @@
+START
+
+CLASS SurveyResponse
+    STRING restaurantName
+    INTEGER rating
+END CLASS
+
+FUNCTION main()
+    responses = LIST of SurveyResponse
+    ADD ("PizzaHut", 4) to responses
+    ADD ("PizzaHut", 5) to responses
+    ADD ("KFC", 3) to responses
+    ADD ("KFC", 4) to responses
+    ADD ("Subway", 5) to responses
+    ADD ("Subway", 4) to responses
+    ADD ("Subway", 5) to responses
+
+    restaurantAverages = MAP<RestaurantName, AverageRating>
+    FOR EACH response IN responses
+        GROUP responses BY response.restaurantName
+        CALCULATE average of ratings per restaurant
+        STORE in restaurantAverages
+    END FOR
+
+    FOR EACH (restaurant, avg) IN restaurantAverages
+        PRINT restaurant + " → " + avg
+    END FOR
+
+    bestRestaurant = restaurant with MAX average rating
+    PRINT "Best performing restaurant: " + bestRestaurant
+
+    worstRestaurant = restaurant with MIN average rating
+    PRINT "Needs improvement: " + worstRestaurant
+END FUNCTION
+
+END
