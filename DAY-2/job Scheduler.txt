@@ -1,0 +1,23 @@
+CLASS Job
+    VARIABLE name, deadline, processingTime
+
+    CONSTRUCTOR(name, deadline, processingTime)
+        SET self.name = name
+        SET self.deadline = deadline
+        SET self.processingTime = processingTime
+
+    METHOD getPriority()
+        RETURN deadline - processingTime  // Lower value = higher priority
+
+FUNCTION JobScheduler(jobList)
+    CREATE priorityQueue  // Sorted by Job.getPriority()
+
+    FOR each job IN jobList
+        INSERT job INTO priorityQueue based on getPriority()
+
+    WHILE priorityQueue is not empty
+        job = REMOVE highest priority job from priorityQueue
+        PRINT "Executing job: " + job.name
+        WAIT job.processingTime seconds
+        PRINT "Job " + job.name + " completed."
+END FUNCTION

@@ -1,0 +1,21 @@
+FUNCTION OnlineQuizTimer(questions, timePerQuestion)
+    CREATE circularArray of size = length of questions
+    SET currentIndex = 0
+
+    FOR i FROM 0 TO length of questions - 1
+        circularArray[i] = timePerQuestion
+
+    WHILE currentIndex < length of questions
+        PRINT "Question " + (currentIndex + 1) + " started."
+        SET timeLeft = circularArray[currentIndex]
+
+        WHILE timeLeft > 0
+            WAIT 1 second
+            timeLeft = timeLeft - 1
+
+            IF timeLeft == 5
+                PRINT "Warning: Only 5 seconds left for Question " + (currentIndex + 1)
+
+        PRINT "Time up for Question " + (currentIndex + 1)
+        currentIndex = (currentIndex + 1) MOD length of questions
+END FUNCTION

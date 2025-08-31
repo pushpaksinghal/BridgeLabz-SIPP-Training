@@ -1,0 +1,23 @@
+CLASS Item
+    VARIABLE name, price
+
+    CONSTRUCTOR(name, price)
+        SET self.name = name
+        SET self.price = price
+
+GENERIC FUNCTION calculateTotalPrice(List<T> items)
+    SET total = 0
+    FOR EACH item IN items
+        total = total + item.price
+    RETURN total
+
+FUNCTION main()
+    CREATE List<Item> cart
+
+    ADD new Item("Laptop", 1000) TO cart
+    ADD new Item("Mouse", 50) TO cart
+    ADD new Item("Keyboard", 70) TO cart
+
+    total = calculateTotalPrice(cart)
+    PRINT "Total cart price: " + total
+END FUNCTION

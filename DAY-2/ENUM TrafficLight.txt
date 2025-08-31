@@ -1,0 +1,23 @@
+ENUM TrafficLight
+    RED
+    GREEN
+    YELLOW
+
+CLASS TrafficSignalSimulator
+    VARIABLE currentLight: TrafficLight
+    METHOD constructor()
+        currentLight = RED
+
+    METHOD changeLight()
+        IF currentLight == RED THEN
+            currentLight = GREEN
+        ELSE IF currentLight == GREEN THEN
+            currentLight = YELLOW
+        ELSE IF currentLight == YELLOW THEN
+            currentLight = RED
+
+    METHOD simulate()
+        LOOP INFINITE
+            PRINT "Current Light: " + currentLight
+            WAIT for fixed interval (e.g., 5 seconds)
+            changeLight()

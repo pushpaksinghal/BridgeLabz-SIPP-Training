@@ -1,0 +1,29 @@
+CLASS Doctor
+    VARIABLE name, specialization
+
+    CONSTRUCTOR(name, specialization)
+        SET self.name = name
+        SET self.specialization = specialization
+
+FUNCTION filterDoctorsBySpecialization(departmentMap, specialization)
+    CREATE List<Doctor> filteredList
+
+    FOR EACH department IN departmentMap
+        FOR EACH doctor IN departmentMap[department]
+            IF doctor.specialization == specialization
+                ADD doctor TO filteredList
+
+    RETURN filteredList
+
+FUNCTION main()
+    CREATE Map<String, List<Doctor>> departmentMap
+
+    ADD "Cardiology" → [Doctor("Dr. A", "Heart"), Doctor("Dr. B", "Heart")] TO departmentMap
+    ADD "Neurology" → [Doctor("Dr. C", "Brain"), Doctor("Dr. D", "Nerve")] TO departmentMap
+    ADD "General" → [Doctor("Dr. E", "Heart"), Doctor("Dr. F", "General")] TO departmentMap
+
+    SET result = filterDoctorsBySpecialization(departmentMap, "Heart")
+
+    FOR EACH doc IN result
+        PRINT "Doctor: " + doc.name + ", Specialization: " + doc.specialization
+END FUNCTION

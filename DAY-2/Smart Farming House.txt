@@ -1,0 +1,40 @@
+ABSTRACT CLASS Crop
+    VARIABLE area  // in hectares
+
+    CONSTRUCTOR(area)
+        SET self.area = area
+
+    ABSTRACT METHOD waterRequirement()
+    ABSTRACT METHOD harvest()
+
+CLASS Rice EXTENDS Crop
+
+    METHOD waterRequirement()
+        SET waterPerHectare = 11000  // liters per hectare
+        SET totalWater = self.area * waterPerHectare
+        RETURN "Rice needs " + totalWater + " liters of water for " + self.area + " hectare(s)."
+
+    METHOD harvest()
+        RETURN "Rice is harvested when the grains are golden and dry."
+
+CLASS Wheat EXTENDS Crop
+
+    METHOD waterRequirement()
+        SET waterPerHectare = 4500  // liters per hectare
+        SET totalWater = self.area * waterPerHectare
+        RETURN "Wheat needs " + totalWater + " liters of water for " + self.area + " hectare(s)."
+
+    METHOD harvest()
+        RETURN "Wheat is harvested when the stalks turn yellow and dry."
+
+// MAIN PROGRAM
+BEGIN
+    CREATE riceCrop = NEW Rice(2)
+    CREATE wheatCrop = NEW Wheat(3)
+
+    PRINT riceCrop.waterRequirement()
+    PRINT riceCrop.harvest()
+
+    PRINT wheatCrop.waterRequirement()
+    PRINT wheatCrop.harvest()
+END
