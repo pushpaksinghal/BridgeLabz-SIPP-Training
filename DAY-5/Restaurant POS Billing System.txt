@@ -1,0 +1,64 @@
+// ===== TAX =====
+
+Interface TaxCalculator:
+    Method calculateTax(itemPrice): returns taxAmount
+
+Class FoodTax implements TaxCalculator:
+    Method calculateTax(price):
+        Return price * 0.05
+
+Class BeverageTax implements TaxCalculator:
+    Method calculateTax(price):
+        Return price * 0.12
+
+Class ImportedTax implements TaxCalculator:
+    Method calculateTax(price):
+        Return price * 0.05 + customsDuty
+
+Class LuxuryTax implements TaxCalculator:
+    Method calculateTax(price):
+        Return price * 0.18  // additional during festivals
+
+// ===== DISCOUNT =====
+
+Interface DiscountPolicy:
+    Method applyDiscount(totalAmount): returns discountedAmount
+
+Class NoDiscount implements DiscountPolicy:
+    Method applyDiscount(amount):
+        Return amount
+
+Class FlatDiscount implements DiscountPolicy:
+    Method applyDiscount(amount):
+        Return amount - 100
+
+Class PercentageDiscount implements DiscountPolicy:
+    Attribute percent = 10
+
+    Method applyDiscount(amount):
+        Return amount - (amount * percent / 100)
+
+Class BuyOneGetOne implements DiscountPolicy:
+    Method applyDiscount(amount):
+        // Logic to remove price of cheapest item
+        Return amount - cheapestItemPrice
+
+// ===== BILLING PROCESS =====
+
+Class MenuItem:
+    Attributes: name, basePrice, TaxCalculator tax
+
+    Method getPriceWithTax():
+        Return basePrice + tax.calculateTax(basePrice)
+
+Class Bill:
+    Attribute items: List<MenuItem>
+    Attribute discount: DiscountPolicy
+
+    Method calculateTotal():
+        total = 0
+        For each item in items:
+            total += item.getPriceWithTax()
+
+        finalAmount = discount.applyDiscount(total)
+        Return finalAmount

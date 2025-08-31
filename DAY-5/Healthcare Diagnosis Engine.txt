@@ -1,0 +1,41 @@
+// Strategy Interface
+Interface DiagnosisStrategy:
+    Method diagnose(List symptoms): returns List of possible diseases
+
+// Strategy 1: Rule-Based Diagnosis
+Class RuleBasedDiagnosis implements DiagnosisStrategy:
+    Method diagnose(symptoms):
+        If symptoms contains "fever" AND "cough":
+            Return ["Flu", "COVID-19"]
+        Else:
+            Return ["Unknown"]
+
+// Strategy 2: AI-Based Diagnosis
+Class AIBasedDiagnosis implements DiagnosisStrategy:
+    Method diagnose(symptoms):
+        // Simulate AI predictions
+        If symptoms contains "headache" AND "nausea":
+            Return ["Migraine", "Vertigo"]
+        Else:
+            Return ["Unknown"]
+
+// Strategy 3: Probability-Based Diagnosis
+Class ProbabilityBasedDiagnosis implements DiagnosisStrategy:
+    Method diagnose(symptoms):
+        // Simulate probability weights
+        Return list of diseases sorted by likelihood
+
+// Context class
+Class DiagnosisContext:
+    Attribute strategy: DiagnosisStrategy
+
+    Method setStrategy(newStrategy):
+        strategy = newStrategy
+
+    Method executeDiagnosis(symptoms):
+        Return strategy.diagnose(symptoms)
+
+// Adding a new algorithm
+Class GeneticPatternDiagnosis implements DiagnosisStrategy:
+    Method diagnose(symptoms):
+        Return ["Genetic Disorder A", "Genetic Disorder B"]

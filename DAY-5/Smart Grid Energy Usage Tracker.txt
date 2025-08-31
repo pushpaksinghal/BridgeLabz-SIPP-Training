@@ -1,0 +1,8 @@
+Data Structure:
+    Map<Zone, Map<Day, List<Reading>>> usageData
+
+Function getPeakUsagePerZone():
+    For each zone in usageData:
+        For each day in zone’s data:
+            peak = max(usageData[zone][day])
+            Print zone + ", " + day + " → Peak Load: " + peak + "kW"

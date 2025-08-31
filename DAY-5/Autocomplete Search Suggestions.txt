@@ -1,0 +1,38 @@
+Class TrieNode:
+    Attribute children: Map<Character, TrieNode>
+    Attribute isEndOfWord: Boolean
+    Attribute word: String
+    Attribute popularity: Integer
+
+Class Trie:
+    Root = new TrieNode()
+
+    Method insert(word, popularity):
+        node = Root
+        For char in word:
+            If char not in node.children:
+                node.children[char] = new TrieNode()
+            node = node.children[char]
+        node.isEndOfWord = True
+        node.word = word
+        node.popularity = popularity
+
+    Method search(prefix):
+        node = Root
+        For char in prefix:
+            If char not in node.children:
+                Return []
+            node = node.children[char]
+        Return getTopMatches(node)
+
+    Method getTopMatches(node):
+        result = []
+        DFS(node, result)
+        Sort result by popularity descending
+        Return top N from result
+
+    Method DFS(node, result):
+        If node.isEndOfWord:
+            result.add((node.word, node.popularity))
+        For each child in node.children:
+            DFS(child, result)

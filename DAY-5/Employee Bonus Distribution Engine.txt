@@ -1,0 +1,17 @@
+Class Employee:
+    Attributes: name, department, rating, baseSalary
+
+Function calculateBonus(employees):
+    grouped = group employees by department
+
+    For each department in grouped:
+        empList = grouped[department]
+        totalSalary = sum(emp.baseSalary for emp in empList)
+        pool = totalSalary * 0.10
+
+        totalRatings = sum(emp.rating for emp in empList)
+
+        For emp in empList:
+            share = emp.rating / totalRatings
+            bonus = share * pool
+            Print emp.name + " → ₹" + bonus + " (" + department + ")"

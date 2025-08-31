@@ -1,0 +1,22 @@
+Class LoadBalancer:
+    Attribute queue: Queue<Server>
+
+    Method addServer(server):
+        queue.enqueue(server)
+
+    Method removeServer(server):
+        tempQueue = empty queue
+        While queue is not empty:
+            current = queue.dequeue()
+            If current != server:
+                tempQueue.enqueue(current)
+        queue = tempQueue
+
+    Method assignRequest(request):
+        server = queue.dequeue()
+        Print request + " → " + server
+        queue.enqueue(server)
+
+    Method processRequests(requestList):
+        For request in requestList:
+            assignRequest(request)
