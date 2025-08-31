@@ -1,0 +1,53 @@
+INTERFACE PaymentMethod
+    METHOD processPayment()
+
+CLASS UPI IMPLEMENTS PaymentMethod
+    VARIABLE upiId
+
+    CONSTRUCTOR(upiId)
+        SET this.upiId = upiId
+
+    METHOD processPayment()
+        PRINT "Processing UPI payment for: " + upiId
+
+CLASS Card IMPLEMENTS PaymentMethod
+    VARIABLE cardNumber
+
+    CONSTRUCTOR(cardNumber)
+        SET this.cardNumber = cardNumber
+
+    METHOD processPayment()
+        PRINT "Processing Card payment for: " + cardNumber
+
+CLASS NetBanking IMPLEMENTS PaymentMethod
+    VARIABLE bankName
+
+    CONSTRUCTOR(bankName)
+        SET this.bankName = bankName
+
+    METHOD processPayment()
+        PRINT "Processing NetBanking payment for: " + bankName
+
+// Generic Transaction class
+CLASS Transaction<T EXTENDS PaymentMethod>
+    VARIABLE paymentMethod : T
+
+    CONSTRUCTOR(paymentMethod)
+        SET this.paymentMethod = paymentMethod
+
+    METHOD execute()
+        CALL paymentMethod.processPayment()
+
+FUNCTION main()
+    CREATE upi = new UPI("user@bank")
+    CREATE card = new Card("1234-5678-9101")
+    CREATE netBank = new NetBanking("MyBank")
+
+    CREATE Transaction<UPI> t1 = new Transaction(upi)
+    CREATE Transaction<Card> t2 = new Transaction(card)
+    CREATE Transaction<NetBanking> t3 = new Transaction(netBank)
+
+    CALL t1.execute()
+    CALL t2.execute()
+    CALL t3.execute()
+END FUNCTION

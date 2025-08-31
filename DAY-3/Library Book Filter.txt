@@ -1,0 +1,25 @@
+CLASS Book
+    VARIABLE title, year, rating
+
+    CONSTRUCTOR(title, year, rating)
+        SET this.title = title
+        SET this.year = year
+        SET this.rating = rating
+
+FUNCTION main()
+    CREATE List<Book> books
+
+    ADD new Book("Java Basics", 2010, 4.2) TO books
+    ADD new Book("Streams in Java", 2018, 4.7) TO books
+    ADD new Book("Advanced Java", 2020, 4.9) TO books
+    ADD new Book("Legacy Code", 2014, 4.6) TO books
+
+    // Stream filter using lambda
+    CREATE List<Book> filteredBooks = books.stream()
+        .filter(book → book.year > 2015)
+        .filter(book → book.rating > 4.5)
+        .collect()
+
+    FOR EACH book IN filteredBooks
+        PRINT "Title: " + book.title + ", Year: " + book.year + ", Rating: " + book.rating
+END FUNCTION

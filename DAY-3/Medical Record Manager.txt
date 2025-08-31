@@ -1,0 +1,46 @@
+INTERFACE Searchable
+    METHOD search(criteria)
+
+INTERFACE Printable
+    METHOD print()
+
+CLASS BloodReport IMPLEMENTS Searchable, Printable
+    VARIABLE patientName, bloodGroup
+
+    CONSTRUCTOR(patientName, bloodGroup)
+        SET this.patientName = patientName
+        SET this.bloodGroup = bloodGroup
+
+    METHOD search(criteria)
+        RETURN patientName CONTAINS criteria OR bloodGroup CONTAINS criteria
+
+    METHOD print()
+        PRINT "Blood Report for " + patientName + ": Blood Group - " + bloodGroup
+
+CLASS XRayReport IMPLEMENTS Searchable, Printable
+    VARIABLE patientName, scanResult
+
+    CONSTRUCTOR(patientName, scanResult)
+        SET this.patientName = patientName
+        SET this.scanResult = scanResult
+
+    METHOD search(criteria)
+        RETURN patientName CONTAINS criteria OR scanResult CONTAINS criteria
+
+    METHOD print()
+        PRINT "X-Ray Report for " + patientName + ": Result - " + scanResult
+
+FUNCTION main()
+    CREATE List<Printable> reports
+
+    ADD new BloodReport("Alice", "O+") TO reports
+    ADD new XRayReport("Bob", "No fracture") TO reports
+
+    FOR EACH report IN reports
+        CALL report.print()  // Polymorphism: different implementation per report
+
+    PRINT "Search Results for 'Alice':"
+    FOR EACH report IN reports
+        IF report IS Searchable AND report.search("Alice")
+            CALL report.print()
+END FUNCTION

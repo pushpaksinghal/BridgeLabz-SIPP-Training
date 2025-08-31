@@ -1,0 +1,44 @@
+FUNCTION solveMaze(maze, x, y, solution)
+    IF x == endX AND y == endY
+        SET solution[x][y] = 1
+        RETURN TRUE
+
+    IF isSafe(maze, x, y)
+        SET solution[x][y] = 1
+
+        // Move Down
+        IF solveMaze(maze, x + 1, y, solution)
+            RETURN TRUE
+
+        // Move Right
+        IF solveMaze(maze, x, y + 1, solution)
+            RETURN TRUE
+
+        // Move Up
+        IF solveMaze(maze, x - 1, y, solution)
+            RETURN TRUE
+
+        // Move Left
+        IF solveMaze(maze, x, y - 1, solution)
+            RETURN TRUE
+
+        // Backtrack
+        SET solution[x][y] = 0
+        RETURN FALSE
+
+    RETURN FALSE
+
+FUNCTION isSafe(maze, x, y)
+    RETURN x and y are within bounds AND maze[x][y] == 0
+
+FUNCTION main()
+    CREATE 2D array maze[N][N]
+    FILL maze with 0s and 1s
+
+    CREATE solution[N][N] FILLED WITH 0s
+
+    IF solveMaze(maze, 0, 0, solution)
+        PRINT "Path found!"
+        PRINT solution grid
+    ELSE
+        PRINT "No path exists."

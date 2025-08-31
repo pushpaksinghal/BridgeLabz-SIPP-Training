@@ -1,0 +1,36 @@
+CLASS Patient
+    VARIABLE id, name, age, disease
+
+    CONSTRUCTOR(id, name, age, disease)
+        SET this.id = id
+        SET this.name = name
+        SET this.age = age
+        SET this.disease = disease
+
+FUNCTION main()
+    CREATE HashMap<Integer, Patient> patientMap
+
+    // Add patients
+    ADD (101, new Patient(101, "Alice", 30, "Flu")) TO patientMap
+    ADD (102, new Patient(102, "Bob", 40, "Diabetes")) TO patientMap
+    ADD (103, new Patient(103, "Charlie", 50, "Hypertension")) TO patientMap
+
+    // Retrieve patient
+    IF patientMap CONTAINS KEY 102
+        patient = patientMap[102]
+        PRINT "Retrieved: " + patient.name + ", Disease: " + patient.disease
+
+    // Update patient
+    IF patientMap CONTAINS KEY 103
+        patientMap[103].disease = "Recovered"
+        PRINT "Patient 103 updated."
+
+    // Delete patient
+    IF patientMap CONTAINS KEY 101
+        REMOVE key 101 FROM patientMap
+        PRINT "Patient 101 deleted."
+
+    // Print all patients
+    FOR EACH entry IN patientMap
+        PRINT "Patient ID: " + entry.key + ", Name: " + entry.value.name
+END FUNCTION

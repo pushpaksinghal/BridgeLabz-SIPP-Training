@@ -1,0 +1,45 @@
+CLASS Customer
+    VARIABLE name, address
+    CONSTRUCTOR(name, address)
+        SET this.name = name
+        SET this.address = address
+
+CLASS Restaurant
+    VARIABLE name, location
+    CONSTRUCTOR(name, location)
+        SET this.name = name
+        SET this.location = location
+
+CLASS DeliveryBoy
+    VARIABLE name, phone
+    CONSTRUCTOR(name, phone)
+        SET this.name = name
+        SET this.phone = phone
+
+CLASS Order
+    VARIABLE customer : Customer
+    VARIABLE restaurant : Restaurant
+    VARIABLE deliveryBoy : DeliveryBoy
+    VARIABLE orderDetails
+
+    CONSTRUCTOR(customer, restaurant, deliveryBoy, orderDetails)
+        SET this.customer = customer
+        SET this.restaurant = restaurant
+        SET this.deliveryBoy = deliveryBoy
+        SET this.orderDetails = orderDetails
+
+    METHOD printOrderSummary()
+        PRINT "Order Summary:"
+        PRINT "Customer: " + customer.name
+        PRINT "Restaurant: " + restaurant.name
+        PRINT "Delivery Boy: " + deliveryBoy.name
+        PRINT "Order Details: " + orderDetails
+
+FUNCTION main()
+    CREATE customer = new Customer("John", "123 Street")
+    CREATE restaurant = new Restaurant("Food Palace", "Central Plaza")
+    CREATE deliveryBoy = new DeliveryBoy("Mike", "9876543210")
+    CREATE order = new Order(customer, restaurant, deliveryBoy, "2 Burgers and 1 Coke")
+
+    CALL order.printOrderSummary()
+END FUNCTION
