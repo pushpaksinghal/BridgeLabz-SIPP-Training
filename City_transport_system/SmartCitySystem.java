@@ -1,9 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class SmartCitySystem{
     public static void main(String[]args){
@@ -14,28 +11,15 @@ public class SmartCitySystem{
             new MetroService("City metro", 1.0, "Every 15 mins")
         );
 
-         System.out.println("Affordable Services (<20):");
+         System.out.println("Affordable Services (<2):");
         services.stream()
-                .filter(s -> s.getfare() < 20)
+                .filter(s -> s.getfare() < 2.0)
                 .sorted(Comparator.comparing(InnerTransportService::getfare)) 
                 .forEach(InnerTransportService::printServiceDetails);
 
         FareCalculator calculator = (distance, rate) -> distance * rate;
         double fare = calculator.calculateFare(5, 3); 
         System.out.println("Calculated Fare: " + fare);
-
-        DoubleSummaryStatistics stats = services.stream()
-                .collect(Collectors.summarizingDouble(InnerTransportService::getfare));
-        System.out.println("Total Revenue: " + stats.getSum() + 
-                           ", Avg Fare: " + stats.getAverage());
-
-        Map<Class<?>, List<InnerTransportService>> grouped =
-                services.stream().collect(Collectors.groupingBy(Object::getClass));
-        System.out.println("Grouped Services: " + grouped);
-
-        services.stream()
-                .filter(s -> s instanceof EmergencyService)
-                .forEach(s -> System.out.println("Emergency Priority: " + s.getname()));
 
         double dist = GeoUtils.calculateDistance(12.9, 77.6, 13.0, 77.7);
         System.out.println("Distance: " + dist);
